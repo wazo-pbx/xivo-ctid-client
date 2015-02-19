@@ -35,6 +35,7 @@ setup(
     entry_points={
         'ctid_client.commands': [
             'endpoints = xivo_ctid_client.commands.endpoints:EndpointsCommand',
+            'infos = xivo_ctid_client.commands.infos:InfosCommand',
             'users = xivo_ctid_client.commands.users:UsersCommand',
         ],
     }

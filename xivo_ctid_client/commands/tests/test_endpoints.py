@@ -34,3 +34,8 @@ class TestEndpoints(HTTPCommandTestCase):
         expected_url = '{base_url}/{endpoint_id}'.format(base_url=self.base_url, endpoint_id=42)
         self.session.get.assert_called_once_with(expected_url)
         assert_that(result, equal_to({'return': 'value'}))
+
+    def test_get_when_not_200(self):
+        self.session.get.return_value = self.new_response(404)
+
+        self.assertRaisesHTTPError(self.command.get, 42)

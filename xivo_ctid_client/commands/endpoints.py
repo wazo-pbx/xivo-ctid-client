@@ -27,4 +27,7 @@ class EndpointsCommand(BaseHTTPCommand):
 
         r = self.session.get(url)
 
+        if r.status_code != 200:
+            self.raise_from_response(r)
+
         return r.json()

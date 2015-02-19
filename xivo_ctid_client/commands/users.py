@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 
 # Copyright (C) 2015 Avencall
 #
@@ -16,26 +15,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from setuptools import setup
-from setuptools import find_packages
+from xivo_lib_rest_client import BaseHTTPCommand
 
-setup(
-    name='xivo_ctid_client',
-    version='0.1',
 
-    description='a simple client library for the xivo-ctid HTTP interface',
+class UsersCommand(BaseHTTPCommand):
 
-    author='Avencall',
-    author_email='dev@avencall.com',
+    resource = 'users'
 
-    url='https://github.com/xivo-pbx/xivo-ctid-client',
+    def get(self, user_id):
+        url = '{base_url}/{user_id}'.format(base_url=self.base_url, user_id=user_id)
 
-    packages=find_packages(),
+        r = self.session.get(url)
 
-    entry_points={
-        'ctid_client.commands': [
-            'endpoints = xivo_ctid_client.commands.endpoints:EndpointsCommand',
-            'users = xivo_ctid_client.commands.users:UsersCommand',
-        ],
-    }
-)
+        if r.status_code != 200:
+            self.raise_from_response(r)
+
+        return r.json()

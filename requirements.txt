@@ -1,0 +1,3 @@
+git+https://github.com/xivo-pbx/xivo-lib-rest-client.git
+requests==2.0.0
+stevedore

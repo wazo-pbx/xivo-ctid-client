@@ -17,4 +17,7 @@
 
 from xivo_lib_rest_client import make_client
 
-Client = make_client('ctid_client.commands')
+Client = make_client('ctid_client.commands',
+                     port=9495,
+                     version='0.1',
+                     https=False)

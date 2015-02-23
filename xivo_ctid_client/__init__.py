@@ -15,9 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from xivo_lib_rest_client import make_client
+from xivo_lib_rest_client import new_client_factory
 
-Client = make_client('ctid_client.commands',
-                     port=9495,
-                     version='0.1',
-                     https=False)
+Client = new_client_factory('ctid_client.commands', 9495, '0.1')

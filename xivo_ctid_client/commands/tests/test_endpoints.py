@@ -27,13 +27,16 @@ class TestEndpoints(HTTPCommandTestCase):
     Command = EndpointsCommand
 
     def test_get(self):
-        self.session.get.return_value = self.new_response(200, json={'return': 'value'})
+        expected = {"status": 0,
+                    "id": 1,
+                    "origin_uuid": "f2c2419c-c4ac-4db9-93e7-f4e5aff8c790"}
+        self.session.get.return_value = self.new_response(200, json=expected)
 
         result = self.command.get(42)
 
         expected_url = '{base_url}/{endpoint_id}'.format(base_url=self.base_url, endpoint_id=42)
         self.session.get.assert_called_once_with(expected_url)
-        assert_that(result, equal_to({'return': 'value'}))
+        assert_that(result, equal_to(expected))
 
     def test_get_when_not_200(self):
         self.session.get.return_value = self.new_response(404)

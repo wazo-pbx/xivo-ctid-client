@@ -19,10 +19,10 @@ from ..endpoints import EndpointsCommand
 
 from hamcrest import assert_that, equal_to
 
-from xivo_lib_rest_client.tests.command import HTTPCommandTestCase
+from xivo_lib_rest_client.tests.command import RESTCommandTestCase
 
 
-class TestEndpoints(HTTPCommandTestCase):
+class TestEndpoints(RESTCommandTestCase):
 
     Command = EndpointsCommand
 

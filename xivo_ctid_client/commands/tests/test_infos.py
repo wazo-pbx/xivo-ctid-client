@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 # Copyright (C) 2015 Avencall
 #
@@ -19,10 +19,10 @@ from ..infos import InfosCommand
 
 from hamcrest import assert_that, equal_to
 
-from xivo_lib_rest_client.tests.command import HTTPCommandTestCase
+from xivo_lib_rest_client.tests.command import RESTCommandTestCase
 
 
-class TestInfos(HTTPCommandTestCase):
+class TestInfos(RESTCommandTestCase):
 
     Command = InfosCommand
 

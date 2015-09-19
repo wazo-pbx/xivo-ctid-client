@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright (C) 2015 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
@@ -15,4 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from xivo_ctid_client.client import CtidClient as Client
+from xivo_lib_rest_client.client import BaseClient
+
+
+class CtidClient(BaseClient):
+
+    namespace = 'ctid_client.commands'
+
+    def __init__(self, host, port=9495, version='0.1', https=False, **kwargs):
+        super(CtidClient, self).__init__(host=host, port=port, version=version, https=https, **kwargs)

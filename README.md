@@ -1,3 +1,7 @@
+**/!\ Important: Please note this repository is now deprecated in Wazo, we don't support it anymore. /!\**
+
+---------------------------------
+
 xivo-ctid-client
 ================
 
